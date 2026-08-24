@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+<title>半日闲 · 上门SPA</title>
+<style>
+/* ===== Reset & Base ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color:#1A1A1A;background:#FAFCFA;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ===== CSS Variables ===== */
+:root{
+  --primary:#2D5F4A;
+  --accent:#4A8C6F;
+  --gold:#C4A265;
+  --bg-light:#EDF5F0;
+  --bg-card:#F7FAF8;
+  --border:#C5D9CE;
+  --text:#1A1A1A;
+  --text2:#4A4A4A;
+  --text-muted:#808080;
+  --white:#FFFFFF;
+  --radius:12px;
+  --shadow:0 2px 12px rgba(45,95,74,0.08);
+}
+
+/* ===== Layout ===== */
+.page{max-width:480px;margin:0 auto;background:#FAFCFA}
+
+/* ===== Cover ===== */
+.cover{
+  position:relative;text-align:center;
+  padding:0 0 40px 0;
+  background:linear-gradient(180deg,#EDF5F0 0%,#FAFCFA 100%);
+}
+.cover-img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:0 0 24px 24px;
+}
+.cover-brand{
+  margin-top:-40px;position:relative;z-index:2;
+  padding:20px 24px 0;
+}
+.cover-brand h1{
+  font-size:2.4rem;font-weight:800;color:var(--primary);
+  letter-spacing:0.15em;margin-bottom:4px;
+}
+.cover-brand .dot{
+  color:var(--gold);font-size:1.6rem;line-height:1;
+}
+.cover-brand .subtitle{
+  font-size:1.1rem;color:var(--accent);letter-spacing:0.3em;
+  margin-bottom:12px;
+}
+.gold-line{
+  width:60px;height:2px;background:var(--gold);
+  margin:12px auto;border-radius:1px;
+}
+.cover-tagline{
+  font-size:0.85rem;color:var(--text2);letter-spacing:0.2em;
+  margin-bottom:16px;
+}
+.cover-services{
+  font-size:0.8rem;color:var(--text-muted);
+  line-height:1.8;letter-spacing:0.05em;
+}
+
+/* ===== Section ===== */
+.section{padding:28px 20px}
+.section + .section{border-top:1px solid var(--border)}
+.section-title{
+  font-size:1.25rem;font-weight:700;color:var(--primary);
+  margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+.section-title::before{
+  content:"";display:inline-block;width:4px;height:20px;
+  background:var(--accent);border-radius:2px;flex-shrink:0;
+}
+
+/* ===== About ===== */
+.about-img{
+  width:100%;border-radius:var(--radius);margin-bottom:16px;
+  aspect-ratio:4/3;object-fit:cover;
+}
+.about-text{
+  font-size:0.92rem;color:var(--text2);line-height:1.8;
+}
+.about-text p{margin-bottom:10px;text-indent:2em}
+
+/* ===== Promo Banner ===== */
+.promo{
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:var(--white);border-radius:var(--radius);
+  padding:20px;margin:20px 0;text-align:center;
+  box-shadow:var(--shadow);
+}
+.promo-title{font-size:1.3rem;font-weight:700;margin-bottom:6px}
+.promo-desc{font-size:0.82rem;opacity:0.9;line-height:1.6}
+
+/* ===== Booking Info ===== */
+.info-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:16px;margin-bottom:12px;
+}
+.info-item{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:8px 0;font-size:0.88rem;
+}
+.info-item + .info-item{border-top:1px dashed var(--border)}
+.info-label{
+  color:var(--primary);font-weight:600;white-space:nowrap;min-width:60px;
+}
+.info-value{color:var(--text2);flex:1}
+
+/* ===== Service Card ===== */
+.svc-card{
+  margin-bottom:24px;background:var(--white);
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);border:1px solid var(--border);
+}
+.svc-card-img{
+  width:100%;aspect-ratio:16/9;object-fit:cover;
+  border-radius:0;
+}
+.svc-card-body{padding:16px}
+.svc-card-title{
+  font-size:1.1rem;font-weight:700;color:var(--accent);
+  margin-bottom:8px;
+}
+.svc-card-desc{
+  font-size:0.85rem;color:var(--text2);line-height:1.7;
+  margin-bottom:14px;
+}
+
+/* ===== Price Table ===== */
+.price-table{width:100%;border-collapse:collapse;font-size:0.85rem}
+.price-table thead th{
+  background:var(--primary);color:var(--white);
+  padding:10px 8px;font-weight:600;text-align:center;
+}
+.price-table thead th:first-child{border-radius:8px 0 0 0;text-align:left;padding-left:12px}
+.price-table thead th:last-child{border-radius:0 8px 0 0;text-align:right;padding-right:12px}
+.price-table tbody td{
+  padding:10px 8px;border-bottom:1px solid var(--border);
+}
+.price-table tbody td:first-child{font-weight:600;color:var(--text)}
+.price-table tbody td:nth-child(2){text-align:center;color:var(--text2)}
+.price-table tbody td:last-child{text-align:right;color:var(--primary);font-weight:700}
+.price-table tbody tr:nth-child(even){background:var(--bg-light)}
+.price-table tbody tr:last-child td{border-bottom:none}
+
+/* ===== Flow Steps ===== */
+.flow{margin-top:12px}
+.flow-item{
+  font-size:0.78rem;color:var(--text2);line-height:1.7;
+  padding:4px 0;padding-left:14px;position:relative;
+}
+.flow-item::before{
+  content:"";position:absolute;left:0;top:12px;
+  width:6px;height:6px;border-radius:50%;background:var(--accent);
+}
+.flow-label{font-weight:600;color:var(--text)}
+
+/* ===== Warning / Tip ===== */
+.tip{
+  font-size:0.78rem;color:var(--text-muted);font-style:italic;
+  margin-top:10px;padding:8px 12px;
+  background:#FFF9F0;border-left:3px solid var(--gold);
+  border-radius:0 6px 6px 0;line-height:1.6;
+}
+
+/* ===== Contact ===== */
+.contact-box{
+  text-align:center;padding:32px 20px;
+  background:linear-gradient(135deg,var(--bg-light),var(--white));
+  border-radius:var(--radius);margin:20px 0;
+  border:1px solid var(--border);
+}
+.contact-name{font-size:1.4rem;font-weight:700;color:var(--primary);margin-bottom:4px}
+.contact-phone{
+  font-size:1.6rem;font-weight:700;color:var(--text);
+  margin-bottom:12px;letter-spacing:0.05em;
+}
+.contact-phone a{color:var(--primary);text-decoration:underline;text-underline-offset:3px}
+.contact-btn{
+  display:inline-block;padding:12px 36px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:var(--white);border-radius:28px;
+  font-size:1rem;font-weight:600;letter-spacing:0.1em;
+  box-shadow:0 4px 16px rgba(45,95,74,0.25);
+  transition:transform 0.15s,box-shadow 0.15s;
+}
+.contact-btn:active{transform:scale(0.97);box-shadow:0 2px 8px rgba(45,95,74,0.2)}
+
+/* ===== Health Warning ===== */
+.health-section{padding:28px 20px 40px}
+.health-title{
+  font-size:1.1rem;font-weight:700;color:var(--primary);
+  text-align:center;margin-bottom:4px;
+}
+.health-sub{
+  font-size:0.8rem;color:var(--text-muted);text-align:center;
+  margin-bottom:20px;
+}
+.health-group{margin-bottom:16px}
+.health-group-title{
+  font-size:0.92rem;font-weight:700;color:var(--primary);
+  margin-bottom:8px;display:flex;align-items:center;gap:6px;
+  cursor:pointer;user-select:none;
+}
+.health-group-title .arrow{
+  font-size:0.7rem;transition:transform 0.25s;color:var(--accent);
+}
+.health-group-title.open .arrow{transform:rotate(90deg)}
+.health-list{
+  max-height:0;overflow:hidden;transition:max-height 0.35s ease;
+}
+.health-list.open{max-height:2000px}
+.health-item{
+  font-size:0.82rem;color:var(--text2);line-height:1.7;
+  padding:6px 0 6px 18px;position:relative;
+}
+.health-item::before{
+  content:"";position:absolute;left:4px;top:14px;
+  width:5px;height:5px;border-radius:50%;background:var(--accent);
+}
+.health-item strong{color:var(--text);font-weight:600}
+.disclaimer{
+  margin-top:16px;font-size:0.82rem;color:var(--text2);line-height:1.7;
+}
+.disclaimer p{margin-bottom:6px}
+
+/* ===== Footer ===== */
+.footer{
+  text-align:center;padding:24px 20px 32px;
+  font-size:0.75rem;color:var(--text-muted);
+  border-top:1px solid var(--border);
+}
+.footer .brand-sm{font-size:0.85rem;color:var(--primary);font-weight:600;margin-bottom:4px}
+
+/* ===== Sticky CTA ===== */
+.sticky-cta{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:rgba(250,252,250,0.95);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border-top:1px solid var(--border);
+  padding:10px 20px;display:flex;align-items:center;justify-content:center;gap:12px;
+}
+.sticky-cta a{
+  flex:1;text-align:center;padding:12px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:var(--white);border-radius:24px;
+  font-size:0.95rem;font-weight:600;letter-spacing:0.05em;
+  box-shadow:0 2px 12px rgba(45,95,74,0.2);
+}
+.sticky-cta a:active{opacity:0.85}
+body{padding-bottom:72px}
+
+/* ===== Animations ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.animate-in{animation:fadeUp 0.5s ease both}
+
+/* ===== Responsive fine-tune ===== */
+@media(min-width:481px){
+  .page{border-left:1px solid var(--border);border-right:1px solid var(--border)}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== Cover ===== -->
+  <div class="cover">
+    <img class="cover-img" src="https://workspace-cdn.uzone.com/f3feb8fd83284f618ceabd69be546ed7%2Fo%2F1787504545934-c.jpg?auth_key=1790096546-0-0-298828e0a8131b4d468f335528211780" alt="半日闲上门SPA" onerror="this.style.display='none'">
+    <div class="cover-brand">
+      <h1>半日闲</h1>
+      <span class="dot">·</span>
+      <div class="subtitle">上 门 S P A</div>
+      <div class="gold-line"></div>
+      <div class="cover-tagline">安 全 · 卫 生 · 专 业 · 舒 适</div>
+      <div class="cover-services">
+        中式推拿 · 精油SPA · 筋膜刀松解<br>
+        专业采耳 · 足部护理
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== About ===== -->
+  <div class="section">
+    <div class="section-title">关于我们</div>
+    <img class="about-img" src="https://workspace-cdn.uzone.com/4a2387ee66404fdf8cf0b7bc2f00e1e6%2Fo%2F1787504545912-c.jpg?auth_key=1790096546-0-0-bff884e89218ada038e0dac18c9c2605" alt="杨老师" onerror="this.style.display='none'">
+    <div class="about-text">
+      <p>欢迎来到【半日闲·上门SPA】，我是杨老师，一名专注上门服务的按摩师。无套路、无玄学、以肌肉、筋膜放松为主，效果说话。</p>
+      <p>主做：中式推拿、精油SPA、采耳、足部护理、筋膜刀肌肉放松。</p>
+      <p>秉持安全、卫生、专业、舒适的原则。所有工具使用前后严格消毒，一次性用品当面拆封，卫生看得见。</p>
+      <p>不管是肩颈僵硬，运动后肌肉酸痛、足部护理、老茧、灰指甲、嵌甲，都能针对性处理。你预约，我上门，省时省力。</p>
+    </div>
+  </div>
+
+  <!-- ===== Promo + Booking ===== -->
+  <div class="section">
+    <div class="section-title">预约须知</div>
+    <div class="promo">
+      <div class="promo-title">新客见面礼：首单立减 30 元！</div>
+      <div class="promo-desc">所有新项目首次预约，直接在总价上减免 30 元<br>（专业修脚、专业采耳不参与此活动）</div>
+    </div>
+    <div class="info-card">
+      <div class="info-item">
+        <span class="info-label">预约</span>
+        <span class="info-value">请提前至少半小时预约，需支付 50 元定金，服务完成后抵扣，爽约不退</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">上门费</span>
+        <span class="info-value">6 元/公里，根据距离预约时确定</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">卫生</span>
+        <span class="info-value">所有工具一客一消毒，一次性用品当面拆封</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Services ===== -->
+  <div class="section">
+    <div class="section-title">服务项目与收费</div>
+
+    <!-- 推拿按摩 -->
+    <div class="svc-card">
+      <img class="svc-card-img" src="https://workspace-cdn.uzone.com/1444042ae6d149a8aae109b3b486b9f9%2Fo%2F1787504545979-c.jpg?auth_key=1790096546-0-0-02c8136a6f7fae66d5bd23c03d3ea8e5" alt="推拿按摩" onerror="this.style.display='none'">
+      <div class="svc-card-body">
+        <div class="svc-card-title">推拿按摩</div>
+        <div class="svc-card-desc">传统手法疏通经络，针对肩颈腰背酸痛、肌肉僵硬进行深度放松，促进气血循环，缓解疲劳。</div>
+        <table class="price-table">
+          <thead><tr><th>服务项目</th><th>时长</th><th>价格</th></tr></thead>
+          <tbody>
+            <tr><td>核心舒缓</td><td>60分钟</td><td>98元</td></tr>
+            <tr><td>全身疏通</td><td>90分钟</td><td>198元</td></tr>
+            <tr><td>深度松解</td><td>120分钟</td><td>268元</td></tr>
+          </tbody>
+        </table>
+        <div class="flow">
+          <div class="flow-item"><span class="flow-label">核心舒缓：</span>全身评估—肩颈+腰背+腿部推拿—经络点穴—拉伸整理</div>
+          <div class="flow-item"><span class="flow-label">全身疏通：</span>全身评估—头部—肩颈—腰背—腿—腹部—手臂推拿—经络梳理—经络点穴—拉伸整理</div>
+          <div class="flow-item"><span class="flow-label">深度松解：</span>全身评估—头部—肩颈—腰背—腿—腹部—手臂推拿—重点加强—经络梳理—经络点穴—拉伸整理</div>
+        </div>
+        <div class="tip">提示：孕妇、恶性肿瘤、严重心血管疾病、传染病、骨折未愈、皮肤破损、严重骨质疏松者禁按；力度以"酸胀可耐受"为宜，切勿盲目追求痛感。</div>
+      </div>
+    </div>
+
+    <!-- 筋膜刀松解 -->
+    <div class="svc-card">
+      <img class="svc-card-img" src="https://workspace-cdn.uzone.com/7d802c67d38547af86b3633200ea09f2%2Fo%2F1787504546235-c.jpg?auth_key=1790096546-0-0-17ffc611f35e570fc123845a0dd7e94e" alt="筋膜刀松解" onerror="this.style.display='none'">
+      <div class="svc-card-body">
+        <div class="svc-card-title">筋膜刀松解</div>
+        <div class="svc-card-desc">专业工具精准剥离深层筋膜粘连，改善体态问题（如圆肩驼背），比传统按摩更透彻，适合运动后恢复或长期伏案人群。</div>
+        <table class="price-table">
+          <thead><tr><th>服务项目</th><th>时长</th><th>价格</th></tr></thead>
+          <tbody>
+            <tr><td>局部松解</td><td>30分钟</td><td>98元</td></tr>
+            <tr><td>全身松解</td><td>90分钟</td><td>288元</td></tr>
+          </tbody>
+        </table>
+        <div class="flow">
+          <div class="flow-item"><span class="flow-label">局部松解：</span>肩颈、腰、背、大/小腿（任选其一）</div>
+          <div class="flow-item"><span class="flow-label">局部流程：</span>痛点评估—涂抹介质—筋膜刀松解—局部拉伸放松—保养建议</div>
+          <div class="flow-item"><span class="flow-label">全身流程：</span>全身评估—涂抹介质—肩颈松解—背部松解—腰部松解—腿部松解—重点部位加强—拉伸放松—保养建议</div>
+        </div>
+        <div class="tip">提示：孕妇、皮肤有伤口/感染、严重静脉曲张者禁用；服用抗凝血药物者慎用、术后或体内有金属植入物者需提前告知，避开相关部位。</div>
+      </div>
+    </div>
+
+    <!-- 精油SPA -->
+    <div class="svc-card">
+      <img class="svc-card-img" src="https://workspace-cdn.uzone.com/801d5ac414d34ace8b4e111a13696604%2Fo%2F1787504546387-c.jpg?auth_key=1790096546-0-0-3f311e598078eb5cde963f1414e7b89d" alt="精油SPA" onerror="this.style.display='none'">
+      <div class="svc-card-body">
+        <div class="svc-card-title">精油SPA</div>
+        <div class="svc-card-desc">天然植物精油配合舒缓手法，深度放松全身，缓解紧绷和疲劳，改善睡眠效果显著。促进血液循环，改善手脚冰凉，滋润肌肤。</div>
+        <table class="price-table">
+          <thead><tr><th>服务项目</th><th>时长</th><th>价格</th></tr></thead>
+          <tbody>
+            <tr><td>舒缓放松</td><td>60分钟</td><td>168元</td></tr>
+            <tr><td>深度滋养</td><td>90分钟</td><td>258元</td></tr>
+            <tr><td>极致享受</td><td>120分钟</td><td>328元</td></tr>
+          </tbody>
+        </table>
+        <div class="flow">
+          <div class="flow-item"><span class="flow-label">舒缓放松：</span>护理前清洁—全身去角质—全身精油推拿—热敷放松—清洁整理（薰衣草复方精油）</div>
+          <div class="flow-item"><span class="flow-label">深度滋养：</span>护理前清洁—全身去角质—全身精油推拿—热敷放松—头部放松—清洁整理（薰衣草、茶树、柠檬等复方精油自选）</div>
+          <div class="flow-item"><span class="flow-label">极致享受：</span>护理前清洁—全身去角质—全身精油推拿—热敷放松—舒缓面膜—头部放松—清洁整理（精油自选）</div>
+        </div>
+        <div class="tip">提示：使用天然植物精油。对花粉、坚果油过敏或处于孕期，务必提前告知。</div>
+      </div>
+    </div>
+
+    <!-- 采耳 -->
+    <div class="svc-card">
+      <img class="svc-card-img" src="https://workspace-cdn.uzone.com/f0fdafd54d0d45dbb6e48cb26a946ebe%2Fo%2F1787504546098-c.jpg?auth_key=1790096546-0-0-bf917cee20cefacf665a922b9329b554" alt="采耳" onerror="this.style.display='none'">
+      <div class="svc-card-body">
+        <div class="svc-card-title">采耳</div>
+        <div class="svc-card-desc">专业工具清理耳道，解决耳垢堵塞引起的听力下降、耳鸣，刺激耳部神经带来酥麻放松感，是极佳的解压助眠方式。</div>
+        <table class="price-table">
+          <thead><tr><th>服务项目</th><th>时长</th><th>价格</th></tr></thead>
+          <tbody>
+            <tr><td>专业采耳</td><td>约30分钟</td><td>68元</td></tr>
+            <tr><td>古法采耳</td><td>约45分钟</td><td>98元</td></tr>
+          </tbody>
+        </table>
+        <div class="flow">
+          <div class="flow-item"><span class="flow-label">专业采耳：</span>耳道检查—耳垢软化—专业工具清理耳道—耳部清洁收尾</div>
+          <div class="flow-item"><span class="flow-label">古法采耳：</span>耳道检查—耳部放松—耳垢软化—传统工具轻柔处理—耳部穴位按摩—清洁收尾</div>
+        </div>
+        <div class="tip">提示：中耳炎发作期、耳膜穿孔、耳道流脓者严禁采耳；采耳后24小时内避免耳朵进水。</div>
+      </div>
+    </div>
+
+    <!-- 足部SPA -->
+    <div class="svc-card">
+      <img class="svc-card-img" src="https://workspace-cdn.uzone.com/d34064a0302945399afabe554410e5af%2Fo%2F1787504546095-c.jpg?auth_key=1790096546-0-0-4d8502cac7ff94e4eaab95ce43451635" alt="足部SPA" onerror="this.style.display='none'">
+      <div class="svc-card-body">
+        <div class="svc-card-title">足部SPA</div>
+        <div class="svc-card-desc">结合足底反射区按摩与精细修脚服务，去除老茧、死皮、灰指甲，通过刺激足底穴位缓解全身疲劳，改善睡眠质量。</div>
+        <table class="price-table">
+          <thead><tr><th>服务项目</th><th>时长</th><th>价格</th></tr></thead>
+          <tbody>
+            <tr><td>专业修脚</td><td>约30分钟</td><td>48元</td></tr>
+            <tr><td>精细护理</td><td>约60分钟</td><td>128元</td></tr>
+            <tr><td>尊享护理</td><td>约90分钟</td><td>188元</td></tr>
+            <tr><td>嵌甲/灰指甲/鸡眼</td><td>当面评估</td><td>当面评估</td></tr>
+          </tbody>
+        </table>
+        <div class="flow">
+          <div class="flow-item"><span class="flow-label">专业修脚：</span>草本泡脚—修趾甲清甲缝—去脚底老茧—护理霜—清洁收尾</div>
+          <div class="flow-item"><span class="flow-label">精细护理：</span>牛奶/红酒泡脚—肩颈按摩—足膜—手部护理、小腿按摩—精细护理—精油按摩—清洁收尾</div>
+          <div class="flow-item"><span class="flow-label">尊享护理：</span>牛奶/红酒泡脚—肩颈、头部、手臂按摩—足膜—手部护理、小腿按摩—精细护理—精油按摩—清洁收尾</div>
+        </div>
+        <div class="tip">提示：糖尿病患者审慎修脚（伤口极难愈合）。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Contact ===== -->
+  <div class="section">
+    <div class="section-title">联系我们</div>
+    <div class="contact-box">
+      <div class="contact-name">杨老师</div>
+      <div class="contact-phone"><a href="tel:15184338557">15184338557</a></div>
+      <a href="tel:15184338557" class="contact-btn" data-primary-action>立即预约</a>
+    </div>
+  </div>
+
+  <!-- ===== Health Warnings ===== -->
+  <div class="health-section">
+    <div class="section-title" style="justify-content:center">
+      <span>健康与禁忌提示</span>
+    </div>
+    <div class="health-sub">预约前请务必确认</div>
+
+    <p style="font-size:0.85rem;color:var(--text2);margin-bottom:16px">为保障您的健康与安全，以下情况请勿预约或需提前告知：</p>
+
+    <!-- Group 1 -->
+    <div class="health-group">
+      <div class="health-group-title" onclick="toggleHealth(this)">
+        <span class="arrow">▶</span> 1. 绝对禁忌（请勿预约）
+      </div>
+      <div class="health-list">
+        <div class="health-item">皮肤有破损、溃烂、未愈合伤口或严重皮肤病（如严重足癣、疱疹等）。</div>
+        <div class="health-item">患有急性传染病、严重血液系统疾病、凝血功能障碍者。</div>
+        <div class="health-item">糖尿病患者（因末梢神经感觉迟钝及伤口难愈合，严禁修脚及强力按摩）。</div>
+        <div class="health-item">骨折未愈、关节脱位或体内有金属植入物者（需避开相关部位）。</div>
+      </div>
+    </div>
+
+    <!-- Group 2 -->
+    <div class="health-group">
+      <div class="health-group-title" onclick="toggleHealth(this)">
+        <span class="arrow">▶</span> 2. 特定人群（需提前告知）
+      </div>
+      <div class="health-list">
+        <div class="health-item"><strong>高龄长者（70岁以上）：</strong>骨质疏松风险较高，需调整手法力度；修脚需格外谨慎。</div>
+        <div class="health-item"><strong>心脑血管疾病/高血压患者：</strong>避免使用过热的水温及刺激性强的精油，按摩力度宜轻。</div>
+        <div class="health-item"><strong>下肢静脉曲张者：</strong>禁止直接按压曲张部位，需避开或轻柔操作。</div>
+      </div>
+    </div>
+
+    <!-- Group 3 -->
+    <div class="health-group">
+      <div class="health-group-title" onclick="toggleHealth(this)">
+        <span class="arrow">▶</span> 3. 生理与状态说明
+      </div>
+      <div class="health-list">
+        <div class="health-item"><strong>女性特殊时期：</strong>孕期（尤其前3个月）禁止按压腰部、腹部及合谷/三阴交等穴位；经期不建议做腹部按摩或足疗。</div>
+        <div class="health-item"><strong>身体状态：</strong>饮酒后、极度疲劳、过饥过饱（饭后1小时内）或发烧状态下，不宜进行深度按摩。</div>
+      </div>
+    </div>
+
+    <!-- Group 4 -->
+    <div class="health-group">
+      <div class="health-group-title" onclick="toggleHealth(this)">
+        <span class="arrow">▶</span> 4. 声明
+      </div>
+      <div class="health-list">
+        <div class="disclaimer">
+          <p>本服务为保健放松性质，非医疗行为。如有持续疼痛或身体不适，请及时就医。</p>
+          <p>如因隐瞒上述病史强行要求服务而导致的身体不适或损伤，本店不承担主要责任。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <div class="footer">
+    <div class="brand-sm">半日闲 · 上门SPA</div>
+    <div>安全 · 卫生 · 专业 · 舒适</div>
+  </div>
+
+</div>
+
+<!-- ===== Sticky CTA ===== -->
+<div class="sticky-cta">
+  <a href="tel:15184338557" data-primary-action>电话预约 15184338557</a>
+</div>
+
+<script>
+// Toggle health warning sections
+function toggleHealth(el){
+  el.classList.toggle('open');
+  var list=el.nextElementSibling;
+  if(list)list.classList.toggle('open');
+}
+
+// Scroll animation
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('animate-in');observer.unobserve(e.target)}
+  });
+},{threshold:0.1});
+
+document.querySelectorAll('.svc-card,.info-card,.promo,.contact-box,.about-img').forEach(function(el){
+  el.style.opacity='0';
+  observer.observe(el);
+});
+
+// Auto-open first health group
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.health-group-title');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>
