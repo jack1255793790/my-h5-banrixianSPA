@@ -1,64 +1,64 @@
-
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <标题>我的 H5 半日闲 SPA</标题>
-    <样式>
-/* ===== 重置与基础 ===== */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0">
+<title>半日闲 · 上门SPA</title>
+<style>
+/* ===== Reset & Base ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-  颜色:#1A1A1A;背景:#FAFCFA;行高:1.7;
-  -webkit-font-smoothing:抗锯齿;
+  color:#1A1A1A;background:#FAFCFA;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
 img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 
-/* ===== CSS 变量 ===== */
-根{
+/* ===== CSS Variables ===== */
+:root{
   --primary:#2D5F4A;
   --accent:#4A8C6F;
   --gold:#C4A265;
   --bg-light:#EDF5F0;
   --bg-card:#F7FAF8;
-  --边框:#C5D9CE;
-  --文本:#1A1A1A;
+  --border:#C5D9CE;
+  --text:#1A1A1A;
   --text2:#4A4A4A;
   --text-muted:#808080;
-  --白色:#FFFFFF;
+  --white:#FFFFFF;
   --radius:12px;
   --shadow:0 2px 12px rgba(45,95,74,0.08);
 }
 
-/* ===== 布局 ===== */
-.page{max-width:480px;margin:15px auto;background:#FAFCFA}
- </style>
-/* ===== 封面 ===== */
-.封面{
-  定位:相对;文本对齐:居中;
+/* ===== Layout ===== */
+.page{max-width:480px;margin:0 auto;background:#FAFCFA}
+
+/* ===== Cover ===== */
+.cover{
+  position:relative;text-align:center;
   padding:0 0 40px 0;
-  背景：线性渐变(180度,#EDF5F0 0%,#FAFCFA 100%);
-
-
-  宽度:100%;宽高比:4/3;对象适应:覆盖;
-  border-radius:0 0 24px 24px;
-
-
-  margin-top:-40px;position:relative;z-index:2;
-  内边距：20px 24px 0;
+  background:linear-gradient(180deg,#EDF5F0 0%,#FAFCFA 100%);
 }
-
+.cover-img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:0 0 24px 24px;
+}
+.cover-brand{
+  margin-top:-40px;position:relative;z-index:2;
+  padding:20px 24px 0;
+}
+.cover-brand h1{
   font-size:2.4rem;font-weight:800;color:var(--primary);
   letter-spacing:0.15em;margin-bottom:4px;
-
-
-  颜色:var(--gold);字体大小:1.6rem;行高:1;
-
-.cover-brandsubtitle
-  字体大小:1.1rem;颜色:var(--accent);字母间距:0.3em;
+}
+.cover-brand .dot{
+  color:var(--gold);font-size:1.6rem;line-height:1;
+}
+.cover-brand .subtitle{
+  font-size:1.1rem;color:var(--accent);letter-spacing:0.3em;
   margin-bottom:12px;
 }
 .gold-line{
